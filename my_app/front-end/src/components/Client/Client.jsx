@@ -3,44 +3,46 @@ import DataTable from 'react-data-table-component'
 import { IoSearchSharp } from "react-icons/io5";
 import { GrDocumentUpdate } from "react-icons/gr";
 import { MdOutlineMonetizationOn } from "react-icons/md";
+import {useSelector} from 'react-redux'
 const Client = () => {
-    const columns = [
-        {
-            name: 'Code',
-            selector: row => row.code
-        },
-        {
-            name: 'Name',
-            selector: row => row.name
-        },
-        {
-            name: 'Email',
-            selector: row => row.email
-        },
-        {
-            name: 'Num',
-            selector: row => row.num
-        }
-    ];
-    const data = [
-        {
-            id: 1,
-            code: 111,
-            name: 'imen',
-            email: 'imen@gmail.com',
-            num: '12334445'
-        },
-        {
-            id: 1,
-            code: 111,
-            name: 'imen',
-            email: "imen@gmail.com",
-            num: '12334445'
-        },
-    ]
+    // const columns = [
+    //     {
+    //         name: 'Code',
+    //         selector: row => row.code
+    //     },
+    //     {
+    //         name: 'Name',
+    //         selector: row => row.name
+    //     },
+    //     {
+    //         name: 'Email',
+    //         selector: row => row.email
+    //     },
+    //     {
+    //         name: 'Num',
+    //         selector: row => row.num
+    //     }
+    // ];
+    // const data = [
+    //     {
+    //         id: 1,
+    //         code: 111,
+    //         name: 'imen',
+    //         email: 'imen@gmail.com',
+    //         num: '12334445'
+    //     },
+    //     {
+    //         id: 1,
+    //         code: 111,
+    //         name: 'imen',
+    //         email: "imen@gmail.com",
+    //         num: '12334445'
+    //     },
+    // ]
+    const Clients = useSelector((state) => state.Client)
     return (
         <>
-            <div className="inline-block">
+            <div>
                 <h1 className="text-[--light-color] text-3xl m-4">Client</h1>
                 <div className='Search'>
                     <input
@@ -68,17 +70,19 @@ const Client = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr >
-                            <th scope="row">1</th>
-                            <td>0000</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>
-                                <button className='border-none ml-1 px-1 py-1'><a href="#"><GrDocumentUpdate /></a></button>
-                                <button className='border-none ml-1 px-1 py-1'><a href="#"><MdOutlineMonetizationOn /></a></button>
-                            </td>
-                        </tr>
+                        {Clients.map((client,index) => (
+                            <tr key={index}>
+                                <th scope="row">{client.id}</th>
+                                <td>{client.Code}</td>
+                                <td>{client.Nom}</td>
+                                <td>{client.Email}</td>
+                                <td>{client.Address}</td>
+                                <td>
+                                    <button className='border-none ml-1 px-1 py-1'><a href="#"><GrDocumentUpdate /></a></button>
+                                    <button className='border-none ml-1 px-1 py-1'><a href="#"><MdOutlineMonetizationOn /></a></button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

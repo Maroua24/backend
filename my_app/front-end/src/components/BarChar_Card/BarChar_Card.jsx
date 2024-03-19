@@ -7,8 +7,8 @@ const BarChart_Card = (props) => {
         { name: props.Key_name1, value: props.Key_value1, fill: '#d9b277' },
         { name: props.Key_name2, value: props.Key_value2, fill: '#a7cae6' },
         { name: props.Key_name3, value: props.Key_value3, fill: '#14F77A' },
-        { name: props.Key_name4, value: props.Key_value4, fill: '#14F77A' },
-        { name: props.Key_name5, value: props.Key_value5, fill: '#14F77A' },
+        { name: props.Key_name4, value: props.Key_value4, fill: '#FA8A77' },
+        { name: props.Key_name5, value: props.Key_value5, fill: '#F5120F' },
     ]
     const [statistic, setstatistic] = useState(false);
     const click = () => {
@@ -26,36 +26,25 @@ const BarChart_Card = (props) => {
                 </div>
 
                 {statistic && (
-                    <div className="w-[230px] h-[270px] ml-5  mb-0 mt-30 border border-solid border-light-color bg-[--statistic-color] shadow-md ">
-                        {/* <BarChart width={150} height={40} data={data}>
-                            <Bar dataKey="value"/>
-                        </BarChart> */}
-                        <BarChart
-                            width={200}
-                            height={150}
-                            data={data}
-                            margin={{
-                                top: 5,
-                                right: 3,
-                                left: 2,
-                                bottom: 5,
-                            }}
-                            barSize={10}
-                        >
-                            <XAxis dataKey={data.name} scale="point" padding={{ left: 10, right: 10 }} />
-                            <YAxis dataKey={data.value} />
-                            <Tooltip />
-                            <Legend />
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <Bar background={{ fill: '#eee' }} />
-                        </BarChart>
-
+                    <div className="w-[230px] h-[290px] ml-5  mb-0 mt-30 border border-solid border-light-color bg-[--statistic-color] shadow-md ">
+                        <PieChart width={200} height={140}>
+                            <Pie
+                                data={data}
+                                cx="50%"
+                                cy="50%"
+                                labelLine={false}
+                                label={{fontSize: 10,}}
+                                outerRadius={40}
+                                dataKey="value"
+                            >
+                            </Pie>
+                        </PieChart>
                         <div className='m-neg-14 ml-3  mr-0'>
                             <Statistic color="#d9b277" details={props.Key_name1} />
                             <Statistic color="#a7cae6" details={props.Key_name2} />
                             <Statistic color="#14F77A" details={props.Key_name3} />
-                            <Statistic color="#14F77A" details={props.Key_name4} />
-                            <Statistic color="#14F77A" details={props.Key_name5} />
+                            <Statistic color="#FA8A77" details={props.Key_name4} />
+                            <Statistic color="#F5120F" details={props.Key_name5} />
                         </div>
                     </div>
                 )}

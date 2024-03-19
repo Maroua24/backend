@@ -27,7 +27,7 @@ const PieChart_Card = (props) =>{
                     <PieChart width={200} height={140}>
                         <Pie
                             dataKey="value"
-                            isAnimationActive={false}
+                            isAnimationActive={true}
                             data={data}
                             cx="55%"
                             cy="40%"

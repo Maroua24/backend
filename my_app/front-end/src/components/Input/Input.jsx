@@ -10,6 +10,7 @@ const Input = (props) => {
                     id="input"
                     className="bg-transparent border border-solid border-[--light-color] w-full h-5 text-[--light-color] border-2 border-outset focus:border-transparent"
                     name=""
+                    // value={props.value}
                 />
             </div>
         </>

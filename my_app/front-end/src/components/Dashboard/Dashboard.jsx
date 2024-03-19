@@ -39,11 +39,11 @@ const Dashboard = () => {
             />
 
             <BarChart_Card title="Paiment"
-                Key_name1="Nomber de paiment par cheque" Key_value1={13948}
-                Key_name2="Nomber de paiment par espece" Key_value2={47277}
-                Key_name3="Nomber de paiment par virement" Key_value3={807}
-                Key_name4="Nomber de paiment par CIB" Key_value4={0}
-                Key_name5="Nomber de paiment par autre" Key_value5={688}
+                Key_name1="Nomber de paiment par autre" Key_value1={688}
+                Key_name2="Nomber de paiment par cheque" Key_value2={13948}
+                Key_name3="Nomber de paiment par CIB" Key_value3={0}
+                Key_name4="Nomber de paiment par espece" Key_value4={47277}
+                Key_name5="Nomber de paiment par virement" Key_value5={807}
             />
 
             <TowLevelPieChart_Card title="Paiment"

@@ -37,73 +37,22 @@ const AddClient = () => {
     const [Dossier_validé, setDossier_validé] = useState("");
     const [valid, setvalid] = useState("");
 
-    // REDUX
-    const Clients = useSelector((state) => state.Client);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(addClient({id: Clients[Clients.length -1].id + 1 , Nom,Email,Pays}))
-        navigate('/Client')
-    }
+    // useEffect(() => {
+    //     (async () => await Load())();
+    // }, []);
 
-    useEffect(() => {
-        (async () => await Load())();
-    }, []);
+    // async function Load(){
+    //     const result = await axios.get(
+    //         "http:127.0.0.1:8000/addclient");
+    //         // setUsers(result.data);
+    //         console.log(result)
+    // }
 
-    async function Load(){
-        const result = await axios.get(
-            "http:127.0.0.1:8000/addclient");
-            // setUsers(result.data);
-            console.log(result)
-    }
 
-    async function save(event) {
-        event.preventDefault();
-        try {
-            await axios.post("http://127.0.0.1:8000/addclient", {
-                    Catégorie_de_compte: Catégorie_de_compte,
-                    Raison_sociale: Raison_sociale,
-                    Sigle: Sigle,
-                    Code_TVA: Code_TVA,
-                    Nature_du_compte: Nature_du_compte,
-                    NIF: NIF,
-                    NIS: NIS,
-                    Registre_de_commerce: Registre_de_commerce,
-                    Article_imposition: Article_imposition,
-                    Devise: Devise,
-                    Rue: Rue,
-                    Ville: Ville,
-                    Région: Région,
-                    Type_de_région: Type_de_région,
-                    Code_postal: Code_postal,
-                    Pays: Pays,
-                    Téléphone: Téléphone,
-                    Email: Email,
-                    Secteur_activité: Secteur_activité,
-                    Condition_de_paiement: Condition_de_paiement,
-                    Créé_le: Créé_le,
-                    Créé_par: Créé_par,
-                    Nom: Nom,
-                    Prénom: Prénom,
-                    Fonction: Fonction,
-                    Type_de_client: Type_de_client,
-                    Fax: Fax,
-                    Dossier_validé: Dossier_validé,
-                    valid: valid
-            });
-            alert("Client Registration Successfully")
-            Load();
-        } catch (error) {
-            {
-                alert("User Registration Failed");
-            }
-        }
-    }
+
     return (
         <>
-        {/*  */}
             <form  method="post" action="{% url 'formulaire_client' %}" onSubmit={handleSubmit}>
                 <h1 className="text-[--light-color] text-2xl">Ajouter un client:</h1>
                 {/* {% csrf_token %} */}
@@ -162,7 +111,7 @@ const AddClient = () => {
 
                         <Select name="Dossier validé :" value_1="Y" value_2="N" choix1="oui" choix2="Non" id="Dossier_validé" value="Dossier_validé" onChange={e => setDossier_validé(e.target.value)}/>
                         <Select name="Status:" value_1="A" value_2="I" choix1="Actif" choix2="Inactif" id="status" value="Status" onChange={e => setvalid(e.target.value)}/>
-                        <button type="submit" className="text-xs bg-card-color text-light-color border-2 border-outset border-card-color py-1 px-2" onClick={save}>Envoyer</button>
+                        <button type="submit" className="text-xs bg-card-color text-light-color border-2 border-outset border-card-color py-1 px-2" onClick={Edit}>Update</button>
                     </div>
             </form>
         </>
